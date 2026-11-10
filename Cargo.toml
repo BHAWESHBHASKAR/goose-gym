@@ -1,0 +1,26 @@
+[package]
+name = "goose-gym"
+version = "0.0.1"
+edition = "2021"
+license = "Apache-2.0"
+description = "Prototype: turn a real agent session into a replayable regression case for goose"
+
+# Standalone workspace on purpose: this lives outside the goose repo and uses goose as a library.
+[workspace]
+
+[dependencies]
+# Pinned to goose v1.59.0. The prototype depends on internals that can change.
+goose = { git = "https://github.com/aaif-goose/goose", rev = "72b8db883ff827f5aa0a0955e2007d1407f5d9b9" }
+goose-providers = { git = "https://github.com/aaif-goose/goose", rev = "72b8db883ff827f5aa0a0955e2007d1407f5d9b9" }
+rmcp = { version = "3.4.1", default-features = false }
+anyhow = "1"
+async-trait = "0.1"
+futures = "0.3"
+regex = "1"
+serde_json = "1"
+tempfile = "3"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+
+# Same as the goose workspace, so dependency builds can be shared with its target folder.
+[profile.dev.package."*"]
+debug = false

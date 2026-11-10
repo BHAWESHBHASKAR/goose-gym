@@ -1,0 +1,3 @@
+# Case files come from real private sessions. Scrubbing is best effort. Never commit them.
+cases/
+target/
